@@ -15,7 +15,7 @@ class ProductManager {
     public function getAllProduct() {
         $sql = "SELECT * FROM products";
         $stmt = $this->database->query($sql);
-        $data = $stmt->fetchALl();
+        $data = $stmt->fetchAll();
         $arr = [];
         foreach ($data as $item) {
             $product = new Product($item['product_name'], $item['product_price'],$item['img'],$item['category_id']);

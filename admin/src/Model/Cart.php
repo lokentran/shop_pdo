@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 namespace App\Model;
 
 class Cart
@@ -7,19 +7,19 @@ class Cart
     public $items = [];
     public $totalPrice =0 ;
     public $totalQty = 0;
-    public $oldCart = $_SESSION['cart'];
     public function __construct($oldCart)
     {
         if ($oldCart) {
             $this->items = $oldCart->items;
             $this->totalPrice = $oldCart->totalPrice;
             $this->totalQty = $oldCart->totalQty;
-
         }
     }
 
     public function add($product)
     {
+        $productId = $product['product_id'];
+
         $productStore = [
             "item" => $product,
             "totalQty" => 0,
@@ -27,16 +27,17 @@ class Cart
         ];
 
         if ($this->items) {
-            if (array_key_exists($product->id, $this->items)) {
-                $productStore = $this->items[$product->id];
+            if (array_key_exists($productId, $this->items)) {
+                $productStore = $this->items[$productId];
             }
         }
       
         $productStore['totalQty']++;
         $productStore['totalPrice'] += $product['product_price'];
-        $this->items[$product['product_id']] = $productStore;
+        $this->items[$productId] = $productStore;
         $this->totalQty++;
         $this->totalPrice +=$product['product_price'];
+    
 
     }
 }
