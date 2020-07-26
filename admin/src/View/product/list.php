@@ -1,28 +1,54 @@
-<a href="index.php?page=add-product">Add Product</a>
-<table>
-    <tr>
-        <th> Product STT</th>
-        <th> Product name</th>
-        <th> Product Price</th>
-        <th>Img</th>
-        <th>Category</th>
-    </tr>
+<style>
+    table{
+        text-align: center;
+    }
+    .table td, .table th {
+        vertical-align: middle;
+        padding: 0.75rem;
+        vertical-align: middle;
+        border-top: 1px solid #dee2e6;
+</style>
 
-    <?php foreach($products as $key=>$product ) : ?> 
+<div class="pt-3">
+    <a href="index.php?page=add-product" class="btn btn-primary mt-3 mb-3">ADD NEW PRODUCT</a>
+    <form action="index.php?page=search-product" method="post" class="form-inline  mt-3 mb-3">
+        <input type="text" name="keyword" placeholder="search product" class="form-control mr-sm-2">
+        <input type="submit"  class="btn-search" value="Search">
+    </form>
+    <table border="0" class="table table-hover">
+        <thead class="badge-dark">
         <tr>
-            <td><?php echo $product->getId() ?></td>
-            <td><?php echo $product->getName() ?></td>
-            <td><?php echo $product->getPrice() ?></td>
-            <td><img src="<?php echo $product->getImg() ?>" alt="" /></td>
-            <td><?php echo $product->getCategory_id() ?></td>
-            <td>
-            <a href="index.php?page=edit-product&id=<?php echo $product->getId()?>">Edit</a>
-            <a onclick ="return confirm('Bạn có chắc chắn muốn xóa?')" href="index.php?page=delete-product&id=<?php echo $product->getId()?>">Delete</a>
-            <a href="index.php?page=add-to-cart&id=<?php echo $product->getId()?>">Add To cart</a>
-            </td>
+            <th>STT</th>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th colspan="3">Action</th>
         </tr>
+        </thead>
+        <?php if (empty($products)): ?>
+            <tr>
+                <td>No data</td>
+            </tr>
+        <?php else: ?>
+            <?php foreach ($products as $key => $product) : ?>
+                <tr>
+                    <td><?php echo ++$key ?></td>
+                    <td><img src="<?php echo $product->getImg() ?>" alt="" width="100px" height="100px"></td>
+                    <td><?php echo $product->getName() ?></td>
+                    <td><?php echo number_format($product->getPrice())." VND"  ?></td>
+                    <td><?php echo $product->getQuantity() ?></td>
+                    <td><?php echo $product->getDescription() ?></td>
+                    <td><?php echo $categories[$product->getCategoryId()-1]->getName() ?></td>
+                    <td><a href="index.php?page=update-product&id=<?php echo $product->getId() ?>"
+                           class="btn btn-primary"><i class="fas fa-user-edit"></i></a></td>
+                    <td><a onclick="return confirm('Are You Sure?')" href="index.php?page=delete-product&id=<?php echo $product->getId() ?>"
+                           class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
+                </tr>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </table>
 
-    <?php endforeach;?> 
-
-  
-</table>
+</div>

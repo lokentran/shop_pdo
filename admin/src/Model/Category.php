@@ -1,56 +1,66 @@
 <?php
 
+
 namespace App\Model;
 
-class Category {
+
+class Category
+{
     protected $id;
-
     protected $name;
+    protected $country;
 
-    public function __construct($name)
+    public function __construct($name, $country)
     {
         $this->name = $name;
+        $this->country = $country;
     }
 
-    
-
     /**
-     * Get the value of id
-     */ 
+     * @return mixed
+     */
     public function getId()
     {
         return $this->id;
     }
 
     /**
-     * Set the value of id
-     *
-     * @return  self
-     */ 
-    public function setId($id)
+     * @param mixed $id
+     */
+    public function setId($id): void
     {
         $this->id = $id;
-
-        return $this;
     }
 
     /**
-     * Get the value of name
-     */ 
+     * @return mixed
+     */
     public function getName()
     {
         return $this->name;
     }
 
     /**
-     * Set the value of name
-     *
-     * @return  self
-     */ 
-    public function setName($name)
+     * @param mixed $name
+     */
+    public function setName($name): void
     {
         $this->name = $name;
+    }
 
-        return $this;
+    /**
+     * @return mixed
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param mixed $country
+     */
+    public function setCountry($country): void
+    {
+        $this->country = $country;
     }
 }

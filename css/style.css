@@ -1,0 +1,98 @@
+body h3 {
+    font-size: 1.2rem;
+}
+
+.all-product img,
+.box-detail img {
+    width: 100%;
+    height: 100%;
+}
+
+.all-product>a {
+    display: flex;
+}
+
+.navbar-nav>li>a {
+    font-weight: bold;
+    padding-left: 15px !important;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.navbar-nav .fa-chevron-down {
+    font-size: 12px;
+    padding-left: 5px;
+}
+
+#main-content {
+    padding: 60px 0;
+}
+
+.footer-web {
+    background: #333;
+    color: white
+}
+
+.top-footer {
+    padding: 50px 0;
+}
+
+.footer-web h3,
+.footer__social-links {
+    display: inline-flex;
+}
+
+.footer__social-links {
+    list-style: none;
+}
+
+.footer__social-links li i {
+    display: flex;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.list-none {
+    margin: 10px 0;
+    list-style: none;
+    padding-left: 0px;
+}
+
+.list-none li {
+    margin: 10px 0;
+}
+
+.bot-footer {
+    background-color: #1c1c1c;
+    padding: 30px 0;
+}
+
+.footer__bottom--links a {
+    color: white;
+    padding: 0 10px;
+}
+
+.footer__bottom--links-top li {
+    float: left;
+}
+
+.logo-footer,
+.footer__bottom--links {
+    display: inline-flex;
+}
+
+.box-detail {
+    padding: 40px 0;
+}
+
+.box-product {
+    padding: 20px 0;
+    margin: 10px 0;
+}
+
+
+.box-product:hover {
+    box-shadow: 0px 5px 15px 5px #dbdbdb;
+}

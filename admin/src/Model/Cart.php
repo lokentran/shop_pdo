@@ -5,8 +5,9 @@ namespace App\Model;
 class Cart
 {
     public $items = [];
-    public $totalPrice =0 ;
+    public $totalPrice = 0;
     public $totalQty = 0;
+
     public function __construct($oldCart)
     {
         if ($oldCart) {
@@ -18,8 +19,7 @@ class Cart
 
     public function add($product)
     {
-        $productId = $product['product_id'];
-
+        $productId = $product['id'];
         $productStore = [
             "item" => $product,
             "totalQty" => 0,
@@ -31,13 +31,11 @@ class Cart
                 $productStore = $this->items[$productId];
             }
         }
-      
+
         $productStore['totalQty']++;
-        $productStore['totalPrice'] += $product['product_price'];
+        $productStore['totalPrice'] += $product['price'];
         $this->items[$productId] = $productStore;
         $this->totalQty++;
-        $this->totalPrice +=$product['product_price'];
-    
-
+        $this->totalPrice += $product['price'];
     }
 }
